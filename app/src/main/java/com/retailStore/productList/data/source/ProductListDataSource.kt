@@ -6,10 +6,13 @@ import java.util.*
 interface ProductListDataSource {
 
     interface CallBack {
-        fun onSuccess(productList: HashMap<String, ArrayList<Product>>)
+        fun onSuccess(productList: ArrayList<Product>)
 
         fun onFailure(message: String)
     }
 
-    fun getProductDetails(category: String,callBack: CallBack)
+    /**
+     * Get the product list from [RetailStoreDatabase]
+     */
+    fun getProductList(category: String, callBack: CallBack)
 }

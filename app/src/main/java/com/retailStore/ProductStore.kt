@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import org.jetbrains.anko.defaultSharedPreferences
 
+/**
+ * Used to store the product storage details in SharedPreferences
+ */
 object ProductStore {
     const val IS_FIRST_LAUNCH: String = "isFirstLaunch"
 
@@ -13,7 +16,7 @@ object ProductStore {
         sharedPreferences = context.defaultSharedPreferences
     }
 
-    fun storeIsFristLaunch(isFirst: Boolean) {
+    fun storeIsFirstLaunch(isFirst: Boolean) {
         sharedPreferences.edit().putBoolean(IS_FIRST_LAUNCH, isFirst).apply()
     }
 

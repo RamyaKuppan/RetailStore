@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import com.retailStore.database.RetailStoreDatabase
-import com.retailStore.productList.ProductListActivity
 import com.retailStore.productList.data.Product
 import org.jetbrains.anko.doAsync
 
@@ -26,7 +25,7 @@ class SplashActivity : AppCompatActivity() {
                 productDao.insertAll(productList)
             }
 
-            ProductStore.storeIsFristLaunch(true)
+            ProductStore.storeIsFirstLaunch(true)
 
         }
 
@@ -38,7 +37,7 @@ class SplashActivity : AppCompatActivity() {
      */
     private fun startProductListActivity() {
         Handler().postDelayed({
-            startActivity(Intent(this, ProductListActivity::class.java))
+            startActivity(Intent(this, ProductActivity::class.java))
             finish()
         }, splashScreenDuration.toLong())
     }
