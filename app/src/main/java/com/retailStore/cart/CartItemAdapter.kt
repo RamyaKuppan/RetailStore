@@ -8,14 +8,14 @@ import com.retailStore.R
 import com.retailStore.cart.data.Cart
 import com.retailStore.databinding.ItemCartBinding
 
-class CartItemAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var cartItems: ArrayList<Cart> = ArrayList<Cart>()
+class CartItemAdapter(private var cartItemClickListener: CartItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private var cartItems: ArrayList<Cart> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding: ItemCartBinding = DataBindingUtil
                 .inflate(LayoutInflater.from(parent.context), R.layout.item_cart,
                         parent, false)
-        return CartViewHolder(binding)
+        return CartViewHolder(binding,cartItemClickListener)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -37,9 +37,10 @@ class CartItemAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         (holder as? CartViewHolder)?.unBind()
     }
 
-    class CartViewHolder(private val binding: ItemCartBinding) : RecyclerView.ViewHolder(binding.root) {
+    class CartViewHolder(private val binding: ItemCartBinding,private val cartItemClickListener:CartItemClickListener) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(cart: Cart) {
             binding.cart = cart
+            binding.clickListener=cartItemClickListener
             binding.executePendingBindings()
 
         }

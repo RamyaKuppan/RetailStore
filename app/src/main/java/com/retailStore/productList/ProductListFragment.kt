@@ -10,11 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.retailStore.ProductActivity
 import com.retailStore.R
-import com.retailStore.category.CategoryListAdapter
-import com.retailStore.category.CategoryListListener
-import com.retailStore.category.CategoryViewModel
-import com.retailStore.category.data.CategoryLocalSource
-import com.retailStore.category.data.CategoryRepo
 import com.retailStore.database.RetailStoreDatabase
 import com.retailStore.databinding.FragmentProductListBinding
 import com.retailStore.productList.data.Product
@@ -28,23 +23,29 @@ import com.retailStore.productList.data.source.ProductListLocalSource
  * Use the [ProductListFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ProductListFragment : Fragment(), CategoryListListener, ProductListListener {
+class ProductListFragment : Fragment(), ProductListListener {
 
-    lateinit var categoryViewModel: CategoryViewModel
-    lateinit var productListBinding: FragmentProductListBinding
-    lateinit var categoryListAdapter: CategoryListAdapter
-    lateinit var productListAdapter: ProductListAdapter
-    lateinit var productDao: ProductDao
+    private lateinit var productListBinding: FragmentProductListBinding
+    private lateinit var productListAdapter: ProductListAdapter
+    private lateinit var productDao: ProductDao
 
     companion object {
+
+        const val CATEGORY = "Category"
+
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
          *
          * @return A new instance of fragment ProductListFragment.
          */
-        fun newInstance(): ProductListFragment {
-            return ProductListFragment()
+        fun newInstance(category: String): ProductListFragment {
+
+            val fragment = ProductListFragment()
+            val args = Bundle()
+            args.putString(CATEGORY, category)
+            fragment.arguments = args
+            return fragment
         }
     }
 
@@ -52,9 +53,6 @@ class ProductListFragment : Fragment(), CategoryListListener, ProductListListene
                               savedInstanceState: Bundle?): View? {
         productListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_product_list, container, false)
         productDao = RetailStoreDatabase.getInstance(activity!!.application).productDao()
-
-        categoryListAdapter = CategoryListAdapter(this)
-        productListBinding.categoryList.adapter = categoryListAdapter
 
         productListAdapter = ProductListAdapter(this)
         productListBinding.productList.adapter = productListAdapter
@@ -65,35 +63,12 @@ class ProductListFragment : Fragment(), CategoryListListener, ProductListListene
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val categotyFactory = CategoryViewModel.Factory(activity!!.application, CategoryRepo(CategoryLocalSource(productDao)))
+        initializeProductList(arguments!!.getString(CATEGORY))
 
-        categoryViewModel = ViewModelProviders.of(this, categotyFactory)
-                .get(CategoryViewModel::class.java)
-
-        categoryViewModel.getCategoryList(this)
-    }
-
-    override fun onCategoryLoad(list: ArrayList<String>) {
-        if (list.size == 0) {
-            productListBinding.isCategory = false
-        } else {
-            productListBinding.isCategory = true
-            categoryListAdapter.setCategoryList(list)
-            initializeProductList(list[0])
-        }
-    }
-
-    override fun onCategoryClick(category: String) {
-        initializeProductList(category)
     }
 
     override fun onProductLoad(products: ArrayList<Product>) {
-        if (products.size == 0) {
-            productListBinding.isCategory = false
-        } else {
-            productListBinding.isCategory = true
-            productListAdapter.setProducts(products)
-        }
+        productListAdapter.setProducts(products)
     }
 
     override fun onProductClick(productID: Int) {
@@ -102,6 +77,9 @@ class ProductListFragment : Fragment(), CategoryListListener, ProductListListene
         }
     }
 
+    /**
+     * Create a viewModel object using factory pattern
+     */
     private fun initializeProductList(category: String) {
         val productListFactory = ProductListViewModel.Factory(activity!!.application, ProductListRepository(ProductListLocalSource(productDao)))
 

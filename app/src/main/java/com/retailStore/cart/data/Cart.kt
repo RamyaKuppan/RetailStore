@@ -20,6 +20,9 @@ class Cart(@ColumnInfo(name = "name")
            @ColumnInfo(name = "count")
            var count: Int = 0,
 
+           @ColumnInfo(name = "productId")
+           var productId: Int = 0,
+
            @PrimaryKey(autoGenerate = true)
-           @ColumnInfo(name = "id")
+           @ColumnInfo(name = "cartId")
            var id: Int = 0)

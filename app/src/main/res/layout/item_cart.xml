@@ -4,6 +4,10 @@
     <data>
 
         <variable
+            name="clickListener"
+            type="com.retailStore.cart.CartItemClickListener" />
+
+        <variable
             name="cart"
             type="com.retailStore.cart.data.Cart" />
     </data>
@@ -21,7 +25,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_small"
+            android:onClick="@{() ->  clickListener.deleteCart(cart.id)}"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:onClick="@{() ->  clickListener.displayProduct(cart.productId)}"
+                android:padding="@dimen/margin_small"
+
+                android:text="@string/delete"
+                android:textColor="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/name"

@@ -2,7 +2,6 @@ package com.retailStore.cart.data.source
 
 import android.arch.persistence.room.*
 import com.retailStore.cart.data.Cart
-import com.retailStore.productList.data.Product
 
 /**
  * CartDao is used to store and get cart items
@@ -11,16 +10,19 @@ import com.retailStore.productList.data.Product
 interface CartDao {
 
     @Insert
-    fun insertProducts(products: ArrayList<Cart>)
+    fun insertProducts(cartItems: ArrayList<Cart>)
 
     @Insert
-    fun insertProduct(product: Cart)
+    fun insertProduct(cartItem: Cart)
 
     @Delete
-    fun deleteProduct(product: Product)
+    fun deleteProduct(cartItem: Cart)
 
     @Query("Select * from cart_table")
     fun getCartItems(): List<Cart>
+
+    @Query("Delete from cart_table where cartId=:id")
+    fun deleteCart(id: Int)
 
     @Update
     fun updateProducts(products: ArrayList<Cart>)

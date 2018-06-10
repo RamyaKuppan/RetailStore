@@ -4,9 +4,9 @@ import com.retailStore.cart.data.Cart
 
 interface CartDataSource {
     interface CallBack {
-        fun onSuccess(cartList: ArrayList<Cart>)
+        fun onSuccess(taskId: Int, cartList: ArrayList<Cart>)
 
-        fun onFailure(message: String)
+        fun onFailure(taskId: Int, message: String)
     }
 
     /**
@@ -14,5 +14,7 @@ interface CartDataSource {
      * calls [CartDataSource.onSuccess] when receives item from database
      *
      */
-    fun getCartItems(callBack: CallBack)
+    fun getCartItems(taskId: Int, callBack: CallBack)
+
+    fun deleteCartItem(taskId: Int, cartId: Int, callBack: CallBack)
 }

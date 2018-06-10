@@ -37,7 +37,7 @@ class SplashActivity : AppCompatActivity() {
      */
     private fun startProductListActivity() {
         Handler().postDelayed({
-            startActivity(Intent(this, ProductActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }, splashScreenDuration.toLong())
     }

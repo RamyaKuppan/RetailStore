@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".ProductActivity" />
         <activity android:name=".cart.CartActivity" />
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".productDetail.ProductDetailActivity"></activity>
     </application>
 
 </manifest>

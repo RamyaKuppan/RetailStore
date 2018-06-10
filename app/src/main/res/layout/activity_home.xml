@@ -1,9 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+<layout>
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".HomeActivity">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/categoryList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/product1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/category_width"
+                android:layout_marginTop="@dimen/home_margin_top"
+                android:onClick="showToast"
+                app:layout_constraintTop_toBottomOf="@+id/categoryList">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorOlive"
+                    android:gravity="center"
+                    android:text="20-60% off: Kitchen and dining" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/product2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/category_width"
+                android:layout_marginTop="@dimen/home_margin_top"
+                android:onClick="showToast"
+                app:layout_constraintTop_toBottomOf="@+id/product1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorTeal"
+                    android:gravity="center"
+                    android:text="Free shipping for Grocery" />
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/product3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/category_width"
+                android:layout_marginTop="@dimen/home_margin_top"
+                android:onClick="showToast"
+                app:layout_constraintTop_toBottomOf="@+id/product2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorDarkSalmon"
+                    android:gravity="center"
+                    android:text="Use promo code to get 10% off" />
+            </android.support.v7.widget.CardView>
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</layout>
