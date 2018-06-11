@@ -19,10 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProductActivity" />
-        <activity android:name=".cart.CartActivity" />
+        <activity android:name=".productList.ProductActivity" />
+        <activity android:name=".cart.CartActivity"
+            android:launchMode="singleInstance"/>
         <activity android:name=".HomeActivity" />
-        <activity android:name=".productDetail.ProductDetailActivity"></activity>
+        <activity android:name=".productDetail.ProductDetailActivity"
+            android:launchMode="singleInstance"/>
     </application>
 
 </manifest>

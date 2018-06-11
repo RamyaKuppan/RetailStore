@@ -17,29 +17,26 @@ class CartViewModel(application: Application, private var cartRepository: CartRe
      */
     fun getCartItems(cartOperationListener: CartOperationListener) {
         this.cartOperationListener = cartOperationListener
-        cartRepository.getCartItems(CartActivity.TASK_ID_LOAD,this)
+        cartRepository.getCartItems(CartActivity.TASK_ID_LOAD, this)
     }
 
-    fun deleteCartItem(cartOperationListener: CartOperationListener, cartId:Int)
-    {
+    fun deleteCartItem(cartOperationListener: CartOperationListener, cartId: Int) {
         this.cartOperationListener = cartOperationListener
-        cartRepository.deleteCart(CartActivity.TAsk_ID_DELETE,cartId,this)
+        cartRepository.deleteCart(CartActivity.TAsk_ID_DELETE, cartId, this)
     }
 
     /**
      * Used to send the cartItem List to [CartActivity]
      */
-    override fun onSuccess(taskId:Int,cartList: ArrayList<Cart>) {
-        if(taskId==CartActivity.TASK_ID_LOAD)
-        {
+    override fun onSuccess(taskId: Int, cartList: ArrayList<Cart>) {
+        if (taskId == CartActivity.TASK_ID_LOAD) {
             cartOperationListener.onCartLoad(cartList)
-        }
-        else{
+        } else {
             cartOperationListener.onCartDeleted()
         }
     }
 
-    override fun onFailure(taskId:Int,message: String) {
+    override fun onFailure(taskId: Int, message: String) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

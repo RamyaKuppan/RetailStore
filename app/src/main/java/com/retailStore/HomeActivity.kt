@@ -16,6 +16,7 @@ import com.retailStore.category.data.CategoryLocalSource
 import com.retailStore.category.data.CategoryRepo
 import com.retailStore.database.RetailStoreDatabase
 import com.retailStore.databinding.ActivityHomeBinding
+import com.retailStore.productList.ProductActivity
 import com.retailStore.productList.ProductListFragment
 
 class HomeActivity : BaseActivity(), CategoryListListener {
@@ -70,8 +71,7 @@ class HomeActivity : BaseActivity(), CategoryListListener {
         return false
     }
 
-    fun showToast(view: View)
-    {
-        Toast.makeText(this,"Work In Progress",Toast.LENGTH_LONG).show()
+    fun showToast(view: View) {
+        Toast.makeText(this, "Work In Progress", Toast.LENGTH_LONG).show()
     }
 }

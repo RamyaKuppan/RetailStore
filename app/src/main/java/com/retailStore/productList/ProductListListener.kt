@@ -12,5 +12,5 @@ interface ProductListListener {
     /**
      * Used to perform click action for particular product
      */
-    fun onProductClick(productID:Int)
+    fun onProductClick(productID: Int)
 }

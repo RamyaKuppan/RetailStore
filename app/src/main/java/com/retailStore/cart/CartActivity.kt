@@ -5,6 +5,7 @@ import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import com.retailStore.BaseActivity
 import com.retailStore.R
@@ -22,8 +23,11 @@ class CartActivity : BaseActivity(), CartOperationListener, CartItemClickListene
     private lateinit var cartViewModel: CartViewModel
 
     companion object {
-        val TASK_ID_LOAD = 1
-        val TAsk_ID_DELETE = 2
+        /**
+         * Constant value to assign task for cart operation
+         */
+        const val TASK_ID_LOAD = 1
+        const val TAsk_ID_DELETE = 2
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,15 +53,24 @@ class CartActivity : BaseActivity(), CartOperationListener, CartItemClickListene
     override fun onCartLoad(cartList: ArrayList<Cart>) {
         cartBinding.cartCount.text = "Items: ${cartList.size}"
         cartBinding.cartPrice.text = "Price: $${getTotalPrice(cartList)}"
-        cartItemAdapter.setCartItems(cartList)
+
+        if (cartList.size == 0) {
+            cartBinding.cartItems.visibility = View.INVISIBLE
+        } else {
+            cartItemAdapter.setCartItems(cartList)
+            cartBinding.cartItems.visibility = View.INVISIBLE
+        }
+
+        cartBinding.executePendingBindings()
     }
 
     override fun onCartDeleted() {
+        Toast.makeText(this, "Cart item deleted successfully", Toast.LENGTH_LONG).show()
         cartViewModel.getCartItems(this)
-        Toast.makeText(this, "Cart item deleted successfully", Toast.LENGTH_SHORT).show()
     }
 
     override fun deleteCart(cartId: Int) {
+        Toast.makeText(this, "Cart deleted from Database", Toast.LENGTH_LONG).show()
         cartViewModel.deleteCartItem(this, cartId)
 
     }
@@ -70,6 +83,9 @@ class CartActivity : BaseActivity(), CartOperationListener, CartItemClickListene
         startActivity(intent)
     }
 
+    /**
+     * Calculate list of cart price
+     */
     private fun getTotalPrice(cartList: ArrayList<Cart>): Float {
         var totalPrice = 0.0f
         for (cart in cartList) {

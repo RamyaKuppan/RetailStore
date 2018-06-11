@@ -1,4 +1,4 @@
-package com.retailStore
+package com.retailStore.productList
 
 import android.content.Intent
 import android.databinding.DataBindingUtil
@@ -6,10 +6,11 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.Menu
 import android.view.MenuItem
+import com.retailStore.BaseActivity
+import com.retailStore.R
 import com.retailStore.cart.CartActivity
 import com.retailStore.databinding.ActivityProductListBinding
 import com.retailStore.productDetail.ProductDetailActivity
-import com.retailStore.productList.ProductListFragment
 
 class ProductActivity : BaseActivity() {
 

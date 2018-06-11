@@ -9,7 +9,7 @@ import com.retailStore.cart.data.source.CartDao
 import com.retailStore.productList.data.Product
 import com.retailStore.productList.data.source.ProductDao
 
-@Database(entities = [(Product::class),(Cart::class)], version = 1)
+@Database(entities = [(Product::class), (Cart::class)], version = 1)
 abstract class RetailStoreDatabase : RoomDatabase() {
 
     abstract fun productDao(): ProductDao

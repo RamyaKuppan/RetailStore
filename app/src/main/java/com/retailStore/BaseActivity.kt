@@ -1,10 +1,8 @@
 package com.retailStore
 
 import android.support.v7.app.AppCompatActivity
-import android.view.MenuItem
 
-open class BaseActivity:AppCompatActivity()
-{
+open class BaseActivity : AppCompatActivity() {
     /**
      * Enable the back arrow button for the screen
      * @param show to display the back arrow if true or false

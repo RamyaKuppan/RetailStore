@@ -20,24 +20,15 @@
         android:layout_marginTop="@dimen/margin_medium"
         android:elevation="@dimen/card_elevation">
 
+
         <LinearLayout
             android:id="@+id/cartLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_small"
-            android:onClick="@{() ->  clickListener.deleteCart(cart.id)}"
+            android:onClick="@{() ->  clickListener.displayProduct(cart.productId)}"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/delete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:onClick="@{() ->  clickListener.displayProduct(cart.productId)}"
-                android:padding="@dimen/margin_small"
-
-                android:text="@string/delete"
-                android:textColor="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/name"
@@ -52,6 +43,19 @@
                 android:layout_height="wrap_content"
                 android:text="@{@string/product_price(cart.price)}"
                 android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="@dimen/margin_small"
+                android:focusableInTouchMode="true"
+                android:onClick="@{() ->  clickListener.deleteCart(cart.id)}"
+                android:padding="@dimen/margin_small"
+                android:text="@string/delete"
+                android:textColor="@color/colorPrimary" />
+
 
         </LinearLayout>
 

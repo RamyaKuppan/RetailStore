@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.retailStore.ProductActivity
 import com.retailStore.R
 import com.retailStore.database.RetailStoreDatabase
 import com.retailStore.databinding.FragmentProductListBinding

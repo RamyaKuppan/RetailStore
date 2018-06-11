@@ -2,8 +2,7 @@ package com.retailStore.cart
 
 import com.retailStore.cart.data.Cart
 
-interface CartOperationListener
-{
+interface CartOperationListener {
     /**
      * Get the list cart item from database
      */

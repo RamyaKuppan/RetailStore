@@ -20,7 +20,7 @@ class CategoryListAdapter(private val categoryClickListener: CategoryListListene
         val binding: ItemCategoryBinding = DataBindingUtil
                 .inflate(LayoutInflater.from(parent.context), R.layout.item_category,
                         parent, false)
-        return CategoryViewHolder(binding,categoryClickListener)
+        return CategoryViewHolder(binding, categoryClickListener)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
