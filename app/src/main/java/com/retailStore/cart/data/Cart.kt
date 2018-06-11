@@ -15,7 +15,7 @@ class Cart(@ColumnInfo(name = "name")
            var category: String = "",
 
            @ColumnInfo(name = "image")
-           var image: String = "",
+           var image: Int = 0,
 
            @ColumnInfo(name = "count")
            var count: Int = 0,

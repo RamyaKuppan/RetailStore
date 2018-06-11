@@ -3,6 +3,7 @@ package com.retailStore.productList.data
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
+import com.retailStore.R
 
 @Entity(tableName = "product_table")
 class Product(@ColumnInfo(name = "type")
@@ -18,7 +19,7 @@ class Product(@ColumnInfo(name = "type")
               var category: String = "",
 
               @ColumnInfo(name = "image")
-              var image: String = "",
+              var image: Int = R.drawable.electronics,
 
               @PrimaryKey(autoGenerate = true)
               @ColumnInfo(name = "id")

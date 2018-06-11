@@ -31,7 +31,7 @@ class ProductDetailActivity : BaseActivity(), ProductDetailsListener {
         super.onCreate(savedInstanceState)
         productDetailsBinding = DataBindingUtil.setContentView(
                 this, R.layout.activity_product_detail)
-        title = "Product Details Screen"
+        title = getString(R.string.product_details)
 
         showBackButton(true)
 

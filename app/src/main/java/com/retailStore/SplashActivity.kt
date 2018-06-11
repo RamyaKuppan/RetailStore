@@ -50,34 +50,34 @@ class SplashActivity : AppCompatActivity() {
         val productList = ArrayList<Product>()
 
         productList.add(Product("Microwave oven", "Samsung 23 L Solo Microwave Oven",
-                6250.0f, "Electronics", ""))
+                6250.0f, "Electronics", R.drawable.electronics))
         productList.add(Product("Microwave oven", "Morphy Richards 23 L Convection Microwave Oven (23MCG, Black)",
-                9084.0f, "Electronics", ""))
+                9084.0f, "Electronics", R.drawable.electronics))
 
         productList.add(Product("Television", "Panasonic 55cm (22 inch) Full HD LED TV",
-                9000.0f, "Electronics", ""))
+                9000.0f, "Electronics", R.drawable.electronics))
         productList.add(Product("Television", "Sony 80cm (32 inch) HD Ready LED TV",
-                19999.0f, "Electronics", ""))
+                19999.0f, "Electronics", R.drawable.electronics))
 
         productList.add(Product("Vacuum Cleaner", "Eureka Forbes Rapid Handheld Vacuum Cleaner",
-                2062.0f, "Electronics", ""))
+                2062.0f, "Electronics", R.drawable.electronics))
         productList.add(Product("Vacuum Cleaner", "Petrice Multi-Functional Vacuum Cleaner",
-                2199.0f, "Electronics", ""))
+                2199.0f, "Electronics", R.drawable.electronics))
 
         productList.add(Product("Table", "Claire Coffee Table",
-                8499.0f, "Furniture", ""))
+                8499.0f, "Furniture", R.drawable.furnitures))
         productList.add(Product("Table", "Terry Study Table",
-                8999.0f, "Furniture", ""))
+                8999.0f, "Furniture", R.drawable.furnitures))
 
         productList.add(Product("Chair", "Milano Cushioned Metallic Chair",
-                1526.0f, "Furniture", ""))
+                1526.0f, "Furniture", R.drawable.furnitures))
         productList.add(Product("Chair", "Ergonomic Chair ",
-                3999.0f, "Furniture", ""))
+                3999.0f, "Furniture", R.drawable.furnitures))
 
         productList.add(Product("Almirah", "Kairy Two Door Shoe Cabinet",
-                3599.0f, "Furniture", ""))
+                3599.0f, "Furniture", R.drawable.furnitures))
         productList.add(Product("Almirah", "Kairy Two Door Shoe Cabinet",
-                9499.0f, "Furniture", ""))
+                9499.0f, "Furniture", R.drawable.furnitures))
 
         return productList
     }
