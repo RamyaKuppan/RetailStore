@@ -2,9 +2,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/favorite"
+        android:icon="@drawable/ic_favorite_border_black_24dp"
+        android:title="Favorite"
+        app:showAsAction="always" />
+
+
+    <item
         android:id="@+id/cart"
         android:icon="@drawable/ic_shopping_cart"
         android:title="Add Cart"
-        app:showAsAction="always"></item>
+        app:showAsAction="always" />
 
 </menu>

@@ -19,12 +19,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".productList.ProductActivity" />
-        <activity android:name=".cart.CartActivity"
-            android:launchMode="singleInstance"/>
+        <activity android:name=".productList.ProductListActivity" />
+        <activity
+            android:name=".cart.CartActivity"
+            android:launchMode="singleInstance" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".productDetail.ProductDetailActivity"
-            android:launchMode="singleInstance"/>
+        <activity
+            android:name=".productDetail.ProductDetailActivity"
+            android:launchMode="singleInstance" />
+        <activity android:name=".favorite.FavoriteActivity"></activity>
     </application>
 
 </manifest>

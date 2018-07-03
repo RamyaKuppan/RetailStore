@@ -16,7 +16,8 @@ import com.retailStore.category.data.CategoryLocalSource
 import com.retailStore.category.data.CategoryRepo
 import com.retailStore.database.RetailStoreDatabase
 import com.retailStore.databinding.ActivityHomeBinding
-import com.retailStore.productList.ProductActivity
+import com.retailStore.favorite.FavoriteActivity
+import com.retailStore.productList.ProductListActivity
 import com.retailStore.productList.ProductListFragment
 
 class HomeActivity : BaseActivity(), CategoryListListener {
@@ -30,6 +31,7 @@ class HomeActivity : BaseActivity(), CategoryListListener {
         activityHomeBinding = DataBindingUtil.setContentView(
                 this, R.layout.activity_home)
 
+        // Change the listener
         categoryListAdapter = CategoryListAdapter(this)
         activityHomeBinding.categoryList.adapter = categoryListAdapter
         setViewModel()
@@ -51,7 +53,8 @@ class HomeActivity : BaseActivity(), CategoryListListener {
     }
 
     override fun onCategoryClick(category: String) {
-        val intent = Intent(this, ProductActivity::class.java)
+        val intent = Intent(this, ProductListActivity::class.java)
+        // Pass identify instead of category
         intent.putExtra(ProductListFragment.CATEGORY, category)
         startActivity(intent)
     }
@@ -66,6 +69,11 @@ class HomeActivity : BaseActivity(), CategoryListListener {
         when (item?.itemId) {
             R.id.cart -> {
                 startActivity(Intent(this, CartActivity::class.java))
+            }
+
+            R.id.favorite -> {
+                startActivity(Intent(this, FavoriteActivity::class.java))
+
             }
         }
         return false

@@ -72,7 +72,7 @@ class ProductListFragment : Fragment(), ProductListListener {
 
     override fun onProductClick(productID: Int) {
         if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
-            (activity as ProductActivity).show(productID)
+            (activity as ProductListActivity).show(productID)
         }
     }
 

@@ -13,6 +13,8 @@ import com.retailStore.cart.CartActivity
 import com.retailStore.cart.data.Cart
 import com.retailStore.database.RetailStoreDatabase
 import com.retailStore.databinding.ActivityProductDetailBinding
+import com.retailStore.favorite.FavoriteActivity
+import com.retailStore.favorite.data.FavoriteItem
 import com.retailStore.productDetail.data.ProductDetailsLocalSource
 import com.retailStore.productDetail.data.ProductDetailsRepository
 import com.retailStore.productList.data.Product
@@ -56,6 +58,12 @@ class ProductDetailActivity : BaseActivity(), ProductDetailsListener {
                     addProductToCart(cart)
                 }
         )
+        productDetailsBinding.favorite.setOnClickListener(
+                {
+                    val favoriteItem = FavoriteItem(product.name, product.price, product.category, product.image, product.id)
+                    addFavorite(favoriteItem)
+                }
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -68,6 +76,11 @@ class ProductDetailActivity : BaseActivity(), ProductDetailsListener {
         when (item?.itemId) {
             R.id.cart -> {
                 startActivity(Intent(this, CartActivity::class.java))
+            }
+            R.id.favorite->
+            {
+                startActivity(Intent(this, FavoriteActivity::class.java))
+
             }
             android.R.id.home -> {
                 finish()
@@ -86,5 +99,12 @@ class ProductDetailActivity : BaseActivity(), ProductDetailsListener {
 
     }
 
+    private fun addFavorite(favoriteItem: FavoriteItem) {
+        doAsync {
+            val favoriteDao = RetailStoreDatabase.getInstance(application).favoriteDao()
+            favoriteDao.addFavorite(favoriteItem)
+        }
+        Toast.makeText(this, "Product added successfully to Favorite", Toast.LENGTH_LONG).show()
+    }
 
 }
