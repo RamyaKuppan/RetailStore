@@ -18,6 +18,8 @@ import com.retailStore.database.RetailStoreDatabase
 import com.retailStore.databinding.ActivityHomeBinding
 import com.retailStore.productList.ProductActivity
 import com.retailStore.productList.ProductListFragment
+import com.retailStore.sales.Profit
+import org.jetbrains.anko.doAsync
 
 class HomeActivity : BaseActivity(), CategoryListListener {
 
@@ -37,6 +39,7 @@ class HomeActivity : BaseActivity(), CategoryListListener {
 
     private fun setViewModel() {
         val productDao = RetailStoreDatabase.getInstance(application).productDao()
+//        val profitDao = RetailStoreDatabase.getInstance(application).profitDao()
 
         val categoryFactory = CategoryViewModel.Factory(application, CategoryRepo(CategoryLocalSource(productDao)))
 
@@ -44,6 +47,11 @@ class HomeActivity : BaseActivity(), CategoryListListener {
                 .get(CategoryViewModel::class.java)
 
         categoryViewModel.getCategoryList(this)
+
+        var profit = Profit("profit1")
+        doAsync {
+//            profitDao.insertProduct(profit)
+        }
     }
 
     override fun onCategoryLoad(list: ArrayList<String>) {
